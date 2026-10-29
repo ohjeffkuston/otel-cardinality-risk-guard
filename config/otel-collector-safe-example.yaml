@@ -1,0 +1,18 @@
+processors:
+  attributes/drop_sensitive_metric_labels:
+    actions:
+      - key: session_id
+        action: delete
+      - key: user_id
+        action: delete
+      - key: email
+        action: delete
+  batch: {}
+
+service:
+  pipelines:
+    metrics:
+      receivers: [otlp]
+      processors: [attributes/drop_sensitive_metric_labels, batch]
+      exporters: [prometheusremotewrite]
+

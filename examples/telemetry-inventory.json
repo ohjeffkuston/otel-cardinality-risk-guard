@@ -1,0 +1,24 @@
+{
+  "defaults": {
+    "series_budget": 1000,
+    "unbounded_threshold": 100
+  },
+  "metrics": [
+    {
+      "name": "api_http_requests_total",
+      "labels": [
+        {"name": "method", "distinct_values": 5, "bounded": true},
+        {"name": "route", "distinct_values": 20, "bounded": true},
+        {"name": "status_class", "distinct_values": 5, "bounded": true}
+      ]
+    },
+    {
+      "name": "checkout_latency_seconds",
+      "labels": [
+        {"name": "region", "distinct_values": 4, "bounded": true},
+        {"name": "session_id", "distinct_values": 5000, "bounded": false, "sensitive": true}
+      ]
+    }
+  ]
+}
+
